@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+
+logging.captureStandardOutput LogLevel.INFO
+
+test {
+    maxHeapSize = '1536m'
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    compile "io.muoncore:muon-core-java:0.1"
+
+    compile("org.springframework.boot:spring-boot-starter") {
+
+    }
+
+    compile('org.codehaus.groovy:groovy-all:2.3.6')
+
+    compile("cglib:cglib:3.1")
+    compile("org.apache.commons:commons-lang3:3.3.2")
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
